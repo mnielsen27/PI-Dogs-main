@@ -6,8 +6,7 @@ const getTemperaments = async () => {
   const dbTemp = await Temperament.findAll();
 
   if (dbTemp.length > 0) {
-    const tempname = await dbTemp.filter((e) => e.name);
-    console.log(tempname);
+    const tempname = await dbTemp?.map((e) => e.name);
     return tempname;
   } else {
     const apiInfo = await axios.get(
