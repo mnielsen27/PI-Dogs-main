@@ -21,7 +21,7 @@ router.get("/dogs/:id", async (req, res) => {
   try {
     const dogByID = await dog.getDogByID(id);
 
-    dogByID.length
+    dogByID
       ? res.status(200).send(dogByID)
       : res.status(404).send("No se encontro la raza solicitada");
   } catch (e) {
@@ -39,8 +39,11 @@ router.get("/dogs", async (req, res) => {
         ? res.status(200).send(allDogs)
         : res.status(404).send("No hay resultados para esta busqueda");
     } else {
-      const byName = await dog.getDogsByName(name);
-
+      const allDogs2 = await dog.getAllDogs();
+      const byName = allDogs2.filter((e) =>
+        e.name.toLowerCase().includes(name.toLowerCase())
+      );
+      console.log(byName, "byName linea 46");
       byName.length
         ? res.status(200).send(byName)
         : res.status(404).send(`No se encontro raza con el nombre ${name}`);
@@ -75,7 +78,7 @@ router.post("/dogs", async (req, res) => {
   } = req.body;
 
   try {
-   const newDog = await dog.newBreed(
+    const newDog = await dog.newBreed(
       name,
       image,
       maxHeight,

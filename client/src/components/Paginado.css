@@ -1,0 +1,9 @@
+.paginado-contenedor {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+.paginado-contenedor > *{
+    margin-left:10px;
+}

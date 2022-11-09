@@ -8,8 +8,10 @@ const getApiDogs = async () => {
     `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY_MJ}`
   );
   const apiData = await apiInfo.data;
+
   const apiDogs = await apiData.map((e) => {
     return {
+      id: e.id,
       image: e.image.url,
       name: e.name,
       temperament: e.temperament,
@@ -32,12 +34,14 @@ const getDbDogs = async () => {
 
   const dbHome = await dbDogs?.map((e) => {
     return {
+      id: e.id,
       image: e.image,
       name: e.name,
-      temperament: e.temperament,
+      temperament: e.temperaments?.map((e) => e.name).join(","),
       weight: e.weight,
     };
   });
+
   return dbHome;
 };
 
@@ -57,7 +61,7 @@ const getDogsByName = async (n) => {
 
   const apiDogsByName = await apiData?.map((e) => {
     return {
-      image: e.image,
+      id: e.id,
       name: e.name,
       temperament: e.temperament,
       weight: e.weight.metric,
@@ -104,18 +108,18 @@ const getDogByID = async (id) => {
       `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY_MJ}`
     );
     apiData = apiInfo.data;
-    apiDog = apiData.filter((e) => e.id == id);
-    const idDog = apiDog?.map((e) => {
-      return {
-        id: e.id,
-        image: e.image.url,
-        name: e.name,
-        temperament: e.temperament,
-        weight: e.weight.metric,
-        height: e.height.metric,
-        life_span: e.life_span,
-      };
-    });
+    apiDog = apiData.find((e) => e.id == id);
+
+    const idDog = {
+      id: apiDog.id,
+      image: apiDog.image.url,
+      name: apiDog.name,
+      temperament: apiDog.temperament,
+      weight: apiDog.weight.metric,
+      height: apiDog.height.metric,
+      life_span: apiDog.life_span,
+    };
+
     return idDog;
   }
 };

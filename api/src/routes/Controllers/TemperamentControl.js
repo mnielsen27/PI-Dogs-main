@@ -31,14 +31,25 @@ const getTemperaments = async () => {
 
     const filteredtemp = unitemp.filter((e) => e != null);
 
-    filteredtemp?.forEach(async (e) => {
+    const orderedTemp = filteredtemp.sort(function (a, b) {
+      if (a > b) {
+        return 1;
+      }
+      if (a < b) {
+        return -1;
+      }
+      return 0;
+    });
+
+    orderedTemp?.forEach(async (e) => {
       await Temperament.findOrCreate({
         where: {
           name: e,
         },
       });
     });
-    return filteredtemp;
+
+    return orderedTemp;
   }
 };
 
