@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import Card from "./Card";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
+import "./Home.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -69,15 +70,15 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <Link to="/dog">Crear raza nueva</Link>
-      <h1>LOS AMIGOS DE KENAI</h1>
+    <div className="background_home">
+      <Link to="/dog">Creation form - new breed</Link>
+      <h1>KENAI'S FRIENDS</h1>
       <button
         onClick={(e) => {
           handleClick(e);
         }}
       >
-        Volver a cargar todas las razas
+        RELOAD BREEDS
       </button>
       <div>
         <select
@@ -85,7 +86,7 @@ export default function Home() {
             handleFilterTemp(e);
           }}
         >
-          <option value="All">Temperamento</option>
+          <option value="All">Temperament</option>
           {allTemp?.map((e) => {
             return (
               <option key={e} value={e}>
@@ -100,9 +101,9 @@ export default function Home() {
             handleFilterByBreed(e);
           }}
         >
-          <option value="All">Razas</option>
-          <option value="existente">Existente</option>
-          <option value="creada">Creada</option>
+          <option value="All">Breeds</option>
+          <option value="existente">Api</option>
+          <option value="creada">Created</option>
         </select>
 
         <select
@@ -110,7 +111,7 @@ export default function Home() {
             handleOrderByName(e);
           }}
         >
-          <option value="All">Orden alfabetico</option>
+          <option value="All">Alphabetic</option>
           <option value="desc">A-Z</option>
           <option value="asc">Z-A</option>
         </select>
@@ -120,7 +121,7 @@ export default function Home() {
             handleOrderByWeight(e);
           }}
         >
-          <option value="all">Peso</option>
+          <option value="all">Weight</option>
           <option value="ascweight">Ascendente</option>
           <option value="descweight">Descendente</option>
         </select>
@@ -141,7 +142,8 @@ export default function Home() {
                 <Card
                   image={e.image}
                   name={e.name}
-                  weight={e.weight}
+                  min_weight={e.min_weight}
+                  max_weight={e.max_weight}
                   temperament={e.temperament}
                 />
               </Link>

@@ -18,19 +18,19 @@ export default function Detail() {
     <div>
       {myDog ? (
         <div>
-          <h1>Nombre: {myDog.name}</h1>
+          <h1>Name: {myDog.name}</h1>
           <img src={myDog.image} alt="" width="500px" height="400px" />
-          <h2>Temperamentos: {myDog.temperament}</h2>
-          <h2>Altura: {myDog.height} cm</h2>
-          <h5>Peso: {myDog.weight} kgs</h5>
-          <h3>Años de vida: {myDog.life_span}</h3>
+          <h2>Temperaments: {myDog.temperament}</h2>
+          <h2>Height: {myDog.height} cm</h2>
+          <h5>Weight: {myDog.weight} kgs</h5>
+          <h3>Life span: {myDog.life_span} years</h3>
         </div>
       ) : (
-        <p>"No se encontro la raza"</p>
+        <p>"Breed not found"</p>
       )}
 
       <Link to="/home">
-        <button>Volver</button>
+        <button>Home</button>
       </Link>
     </div>
   );

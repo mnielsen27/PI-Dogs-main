@@ -1,14 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./LandingPage.css";
 
 function LandingPage() {
   return (
-    <div>
-      <h1>BIENVENIDOS A LA PAGINA DE KENAI</h1>
-      <Link to="/home">
-        <button>Entrar</button>
-      </Link>
-    </div>
+    <section className="background">
+      <div className="texto_y_boton">
+        <h1 className="texto">WELCOME!</h1>
+        <Link to="/home">
+          <button className="inicio_button">Enter</button>
+        </Link>
+      </div>
+    </section>
   );
 }
 

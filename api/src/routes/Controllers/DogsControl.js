@@ -15,7 +15,10 @@ const getApiDogs = async () => {
       image: e.image.url,
       name: e.name,
       temperament: e.temperament,
-      weight: e.weight.metric,
+      min_weight: parseInt(e.weight.metric.split("-")[0]),
+      max_weight: parseInt(e.weight.metric.split("-")[1]),
+      height: e.height.metric,
+      life_span: e.life_span,
     };
   });
   return apiDogs;
@@ -38,7 +41,10 @@ const getDbDogs = async () => {
       image: e.image,
       name: e.name,
       temperament: e.temperaments?.map((e) => e.name).join(","),
-      weight: e.weight,
+      min_weight: e.min_weight,
+      max_weight: e.max_weight,
+      height: e.height,
+      life_span: e.life_span,
     };
   });
 
@@ -53,7 +59,7 @@ const getAllDogs = async () => {
   return allDogs;
 };
 
-const getDogsByName = async (n) => {
+/*const getDogsByName = async (n) => {
   const apiRes = await axios.get(
     `https://api.thedogapi.com/v1/breeds/search?q=${n}&&api_key=${API_KEY_MJ}`
   );
@@ -88,9 +94,10 @@ const getDogsByName = async (n) => {
 
   const allByName = dbDogsByName.concat(apiDogsByName);
   return allByName;
-};
+};*/
 
 const getDogByID = async (id) => {
+  console.log(id);
   if (id.length > 10) {
     const dbDogs = await Dog.findOne({
       where: {
@@ -102,7 +109,16 @@ const getDogByID = async (id) => {
       },
     });
 
-    const idDog = dbDogs;
+    const idDogs = {
+      id: dbDogs.id,
+      image: dbDogs.image,
+      name: dbDogs.name,
+      temperament: dbDogs.temperaments?.map((e) => e.name).join(","),
+      weight: `${dbDogs.min_weight} - ${dbDogs.max_weight}`,
+      height: dbDogs.height,
+      life_span: dbDogs.life_span,
+    };
+    return idDogs;
   } else {
     const apiInfo = await axios.get(
       `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY_MJ}`
@@ -127,25 +143,24 @@ const getDogByID = async (id) => {
 const newBreed = async (
   name,
   image,
-  maxHeight,
-  minHeight,
-  maxWeight,
-  minWeight,
+  max_height,
+  min_height,
+  max_weight,
+  min_weight,
   life_span,
   temperament
 ) => {
-  if (!name || !maxHeight || !minHeight || !maxWeight || !minWeight) {
+  if (!name || !max_height || !min_height || !max_weight || !min_weight) {
     return "Faltan datos";
   } else {
-    const height = [minHeight, maxHeight].join(" - ");
-
-    const weight = [minWeight, maxWeight].join(" - ");
+    const height = [min_height, max_height].join(" - ");
 
     const newDog = await Dog.create({
       name,
       image,
       height,
-      weight,
+      max_weight,
+      min_weight,
       life_span,
     });
 
@@ -161,4 +176,4 @@ const newBreed = async (
   }
 };
 
-module.exports = { getAllDogs, getDogsByName, getDogByID, newBreed };
+module.exports = { getAllDogs, getDogByID, newBreed };

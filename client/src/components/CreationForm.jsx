@@ -11,10 +11,10 @@ export default function DogCreation() {
   const [input, setInput] = useState({
     name: "",
     image: "",
-    max_Weight: "",
-    min_Weight: "",
-    max_Height: "",
-    min_Height: "",
+    max_weight: "",
+    min_weight: "",
+    max_height: "",
+    min_height: "",
     life_span: "",
     temperament: [],
   });
@@ -27,7 +27,7 @@ export default function DogCreation() {
     console.log(input);
   }
 
- /* function handleSelectTemp(e) {
+  /* function handleSelectTemp(e) {
     console.log(e.target.value);
     console.log(input);
     setInput({
@@ -41,7 +41,7 @@ export default function DogCreation() {
     console.log(input);
     setInput({
       ...input,
-      temperaments: [...input.temperaments, e.target.value],
+      temperament: [...input.temperament, e.target.value],
     });
   }
 
@@ -58,7 +58,7 @@ export default function DogCreation() {
       max_height: "",
       min_height: "",
       life_span: "",
-      temperaments: [],
+      temperament: [],
     });
     history.push("/home");
   }
@@ -75,7 +75,7 @@ export default function DogCreation() {
       <h1>Crea tu raza de perro!</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
-          <label>Nombre:</label>
+          <label>Name:</label>
           <input
             type="text"
             value={input.name}
@@ -84,7 +84,7 @@ export default function DogCreation() {
           />
         </div>
         <div>
-          <label>Imagen:</label>
+          <label>Image:</label>
           <input
             type="text"
             value={input.image}
@@ -93,7 +93,7 @@ export default function DogCreation() {
           />
         </div>
         <div>
-          <label>Maximo peso:</label>
+          <label>Max Weight:</label>
           <input
             type="number"
             value={input.max_weight}
@@ -102,7 +102,7 @@ export default function DogCreation() {
           />
         </div>
         <div>
-          <label>Minimo peso:</label>
+          <label>Min Weight:</label>
           <input
             type="number"
             value={input.min_weight}
@@ -111,7 +111,7 @@ export default function DogCreation() {
           />
         </div>
         <div>
-          <label>Maxima altura:</label>
+          <label>Max Height:</label>
           <input
             type="number"
             value={input.max_height}
@@ -120,7 +120,7 @@ export default function DogCreation() {
           />
         </div>
         <div>
-          <label>Minima altura:</label>
+          <label>Min Height:</label>
           <input
             type="number"
             value={input.min_height}
@@ -129,7 +129,7 @@ export default function DogCreation() {
           />
         </div>
         <div>
-          <label>Esperanza de vida:</label>
+          <label>Life Span:</label>
           <input
             type="text"
             value={input.life_span}
@@ -139,15 +139,15 @@ export default function DogCreation() {
         </div>
 
         <div>
-          <label>Temperamentos:</label>
+          <label>Temperaments:</label>
           <select onChange={(e) => handleSelect(e)}>
             {temps.map((t) => (
               <option value={t}>{t}</option>
             ))}
+            <ul>
+              <li>{input.temperament.map((e) => e + ",")}</li>
+            </ul>
           </select>
-          <ul>
-            <li>{input.temperaments.map((e) => e + ",")}</li>
-          </ul>
         </div>
 
         <button type="submit">Crear Raza</button>

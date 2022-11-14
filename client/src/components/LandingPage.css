@@ -1,0 +1,52 @@
+.background {
+
+
+background-image: url('https://cdn.pixabay.com/photo/2015/07/09/19/32/dog-838281__340.jpg');
+/*background-image: url('https://img.freepik.com/foto-gratis/hermoso-retrato-mascota-perro_23-2149218450.jpg?size=626&ext=jpg');
+background-image: url('../images/IMG_4452.jpg');
+background-image: url('https://img.freepik.com/foto-gratis/labrador-retriever_95678-27.jpg?w=900&t=st=1668113726~exp=1668114326~hmac=483f1451fc55892a94f61f4567ecdda970f2cccd63c1282f7452f21e5439224f');
+*/background-size: cover;
+object-fit: cover;
+background-position: center;
+height: 100vh;
+display: flex;
+justify-content: center;
+
+
+}
+
+.texto_y_boton {
+	margin-top: 50px;
+}
+
+.inicio_button {
+	box-shadow: 3px 4px 0px 0px #e1e0e99d;
+	background:linear-gradient(to bottom, #151415 5%, #b4b2be 100%);
+	background-color:#989ab7;
+	border-radius:18px;
+	border:1px solid #1a1a3e;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-size:20px;
+	padding:7px 25px;
+	text-shadow:0px 1px 0px #7b7fb1;
+}
+.inicio_button:hover {
+	background:linear-gradient(to bottom, #121212 5%, #dedae5 100%);
+	background-color:#eff70c;
+}
+.inicio_button:active {
+	position:relative;
+	top:1px;
+}
+.texto{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 40px;
+   color: rgb(9, 9, 8);
+   position: relative;
+   margin-top: 800;
+   margin-right: 100;
+
+} 

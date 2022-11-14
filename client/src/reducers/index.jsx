@@ -118,22 +118,23 @@ function rootReducer(state = initialState, action) {
 
     case ORDER_BY_WEIGHT: {
       const allDogs4 = state.allDogs;
+
       let orderedDogsW =
-        action.payload === "desc"
+        action.payload === "ascweight"
           ? state.dogs.sort(function (a, b) {
-              if (a.name > b.name) {
+              if (a.min_weight > b.min_weight) {
                 return 1;
               }
-              if (a.name < b.name) {
+              if (a.min_weight < b.min_weight) {
                 return -1;
               }
               return 0;
             })
           : state.dogs.sort(function (a, b) {
-              if (a.name < b.name) {
+              if (a.min_weight < b.min_weight) {
                 return 1;
               }
-              if (a.name > b.name) {
+              if (a.min_weight > b.min_weight) {
                 return -1;
               }
               return 0;

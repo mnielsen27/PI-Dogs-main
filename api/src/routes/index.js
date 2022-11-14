@@ -31,16 +31,14 @@ router.get("/dogs/:id", async (req, res) => {
 
 router.get("/dogs", async (req, res) => {
   const { name } = req.query;
+  const allDogs = await dog.getAllDogs();
   try {
     if (!name) {
-      const allDogs = await dog.getAllDogs();
-
       allDogs.length
         ? res.status(200).send(allDogs)
         : res.status(404).send("No hay resultados para esta busqueda");
     } else {
-      const allDogs2 = await dog.getAllDogs();
-      const byName = allDogs2.filter((e) =>
+      const byName = allDogs.filter((e) =>
         e.name.toLowerCase().includes(name.toLowerCase())
       );
       console.log(byName, "byName linea 46");
@@ -69,10 +67,10 @@ router.post("/dogs", async (req, res) => {
   const {
     name,
     image,
-    maxHeight,
-    minHeight,
-    maxWeight,
-    minWeight,
+    max_height,
+    min_height,
+    max_weight,
+    min_weight,
     life_span,
     temperament,
   } = req.body;
@@ -81,10 +79,10 @@ router.post("/dogs", async (req, res) => {
     const newDog = await dog.newBreed(
       name,
       image,
-      maxHeight,
-      minHeight,
-      maxWeight,
-      minWeight,
+      max_height,
+      min_height,
+      max_weight,
+      min_weight,
       life_span,
       temperament
     );
