@@ -1,11 +1,8 @@
 .background {
 
 
-background-image: url('https://cdn.pixabay.com/photo/2015/07/09/19/32/dog-838281__340.jpg');
-/*background-image: url('https://img.freepik.com/foto-gratis/hermoso-retrato-mascota-perro_23-2149218450.jpg?size=626&ext=jpg');
-background-image: url('../images/IMG_4452.jpg');
-background-image: url('https://img.freepik.com/foto-gratis/labrador-retriever_95678-27.jpg?w=900&t=st=1668113726~exp=1668114326~hmac=483f1451fc55892a94f61f4567ecdda970f2cccd63c1282f7452f21e5439224f');
-*/background-size: cover;
+background-image: url('../images/landingPage.jpg');
+background-size: cover;
 object-fit: cover;
 background-position: center;
 height: 100vh;

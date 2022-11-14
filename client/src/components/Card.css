@@ -3,7 +3,7 @@
     border-radius: 5%;
     margin: 20px;
     width: 21rem;
-    height: 30rem;
+    height: 23rem;
     transition: all .3s;
     background: #f9f5f7d2;
     
@@ -12,10 +12,10 @@
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     
   }
-   .card:hover {
-    margin-top: -30px;}
+
     
   .card-title {
+    
     font-size: 22px;
     margin-bottom: 15px;
     
@@ -23,11 +23,11 @@
 
   .card-image{
     width: 90%;
-    padding: 4px;
+    padding: 1px;
     margin-left: 15px;
     box-sizing: border-box;
-    border: solid 1px rgba(23, 42, 41, 0.824) ;
-    background-color: rgba(102, 116, 113, 0.834);
+    border: solid 10px rgba(7, 12, 12, 0.824) ;
+    background-color: rgba(12, 12, 12, 0.834);
   }
   
   .card-data{

@@ -8,11 +8,11 @@ import {
   filterByBreed,
   orderByName,
   orderByWeight,
-} from "../actions";
+} from "../../actions";
 import { Link } from "react-router-dom";
-import Card from "./Card";
-import Paginado from "./Paginado";
-import SearchBar from "./SearchBar";
+import Card from "../Card";
+import Paginado from "../Paginado";
+import SearchBar from "../SearchBar";
 import "./Home.css";
 
 export default function Home() {
@@ -70,18 +70,22 @@ export default function Home() {
   }
 
   return (
-    <div className="background_home">
-      <Link to="/dog">Creation form - new breed</Link>
-      <h1>KENAI'S FRIENDS</h1>
+    <div className="background-home">
+      <h1 id="home-Title">A DOG'S PAGE</h1>
+
       <button
+        id="reloadBreeds-Home"
         onClick={(e) => {
           handleClick(e);
         }}
       >
         RELOAD BREEDS
       </button>
+      <p />
+
       <div>
         <select
+          className="home-filters"
           onChange={(e) => {
             handleFilterTemp(e);
           }}
@@ -97,6 +101,7 @@ export default function Home() {
         </select>
 
         <select
+          className="home-filters"
           onChange={(e) => {
             handleFilterByBreed(e);
           }}
@@ -107,6 +112,7 @@ export default function Home() {
         </select>
 
         <select
+          className="home-filters"
           onChange={(e) => {
             handleOrderByName(e);
           }}
@@ -117,40 +123,46 @@ export default function Home() {
         </select>
 
         <select
+          className="home-filters"
           onChange={(e) => {
             handleOrderByWeight(e);
           }}
         >
           <option value="all">Weight</option>
-          <option value="ascweight">Ascendente</option>
-          <option value="descweight">Descendente</option>
+          <option value="ascweight">Min to Max</option>
+          <option value="descweight">Max to min</option>
         </select>
-
-        <div>
+        <br />
+        <div className="home-filters">
           <SearchBar />
-          <Paginado
-            dogsPerPage={dogsPerPage}
-            allDogs={allDogs.length}
-            paginado={paginado}
-          ></Paginado>
         </div>
+        <br />
+        <Link id="home-link-creationForm" to="/dog">
+          Creation form - new breed
+        </Link>
 
-        {allPagDogs?.map((e) => {
-          return (
-            <div>
-              <Link to={"/detail/" + e.id}>
-                <Card
-                  image={e.image}
-                  name={e.name}
-                  min_weight={e.min_weight}
-                  max_weight={e.max_weight}
-                  temperament={e.temperament}
-                />
-              </Link>
-            </div>
-          );
-        })}
+        <Paginado
+          dogsPerPage={dogsPerPage}
+          allDogs={allDogs.length}
+          paginado={paginado}
+        ></Paginado>
       </div>
+
+      {allPagDogs?.map((e) => {
+        return (
+          <div className="cards">
+            <Link to={"/detail/" + e.id}>
+              <Card
+                image={e.image}
+                name={e.name}
+                min_weight={e.min_weight}
+                max_weight={e.max_weight}
+                temperament={e.temperament}
+              />
+            </Link>
+          </div>
+        );
+      })}
     </div>
   );
 }

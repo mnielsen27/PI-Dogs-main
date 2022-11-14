@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getSearchByName } from "../actions";
+import "./SearchBar.css";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ export default function SearchBar() {
   }
 
   return (
-    <div>
+    <div className="searchBar">
       <input
         type="text"
         placeholder="Search"

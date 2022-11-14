@@ -1,0 +1,48 @@
+.background-home {
+    
+    min-height: 100vh;
+    background-image: url('../../images/istockphoto-855091300-612x612.jpg');
+    background-size:contain;
+    background-position: center center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+    }
+
+#home-link-creationForm{
+
+    font-size: 18px;
+    padding-top: 2vh;
+}
+
+.cards {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+
+
+#reloadBreeds-Home{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 16px;
+
+}
+
+#home-Title {
+    font-size: 50px;
+}
+
+
+
+.home-filters {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 16px;
+}
+
+
+
+
+
+    
+    

@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
-import Home from "./components/Home";
+import Home from "./components/Home/index";
 import Detail from "./components/Detail";
 import DogCreation from "./components/CreationForm";
 

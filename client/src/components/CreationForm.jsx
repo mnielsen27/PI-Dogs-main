@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { postDog, getAllTemperaments } from "../actions/index";
 import { useDispatch, useSelector } from "react-redux";
+import "./CreationForm.css";
 
 export default function DogCreation() {
   const dispatch = useDispatch();
@@ -26,15 +27,6 @@ export default function DogCreation() {
     });
     console.log(input);
   }
-
-  /* function handleSelectTemp(e) {
-    console.log(e.target.value);
-    console.log(input);
-    setInput({
-      ...input,
-      temperaments: [...input.platforms, e.target.value],
-    });
-  }*/
 
   function handleSelect(e) {
     console.log(e.target.value);
@@ -68,89 +60,99 @@ export default function DogCreation() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="background-creation">
       <Link to="/home">
-        <button>Volver</button>
+        <button id="back-button">Home</button>
       </Link>
-      <h1>Crea tu raza de perro!</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <h1>Create your dog's breed!</h1>
+      <form id="form" onSubmit={(e) => handleSubmit(e)}>
         <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            value={input.name}
-            name="name"
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Image:</label>
-          <input
-            type="text"
-            value={input.image}
-            name="image"
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Max Weight:</label>
-          <input
-            type="number"
-            value={input.max_weight}
-            name="max_weight"
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Min Weight:</label>
-          <input
-            type="number"
-            value={input.min_weight}
-            name="min_weight"
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Max Height:</label>
-          <input
-            type="number"
-            value={input.max_height}
-            name="max_height"
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Min Height:</label>
-          <input
-            type="number"
-            value={input.min_height}
-            name="min_height"
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div>
-          <label>Life Span:</label>
-          <input
-            type="text"
-            value={input.life_span}
-            name="life_span"
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-
-        <div>
-          <label>Temperaments:</label>
-          <select onChange={(e) => handleSelect(e)}>
-            {temps.map((t) => (
-              <option value={t}>{t}</option>
-            ))}
+          <div>
+            <label>Name: </label>
+            <input
+              type="text"
+              value={input.name}
+              name="name"
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <p />
+          <div>
+            <label>Image: </label>
+            <input
+              type="text"
+              value={input.image}
+              name="image"
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <p />
+          <div>
+            <label>Max Weight: </label>
+            <input
+              type="number"
+              value={input.max_weight}
+              name="max_weight"
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <p />
+          <div>
+            <label>Min Weight: </label>
+            <input
+              type="number"
+              value={input.min_weight}
+              name="min_weight"
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <p />
+          <div>
+            <label>Max Height: </label>
+            <input
+              type="number"
+              value={input.max_height}
+              name="max_height"
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <p />
+          <div>
+            <label>Min Height: </label>
+            <input
+              type="number"
+              value={input.min_height}
+              name="min_height"
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <p />
+          <div>
+            <label>Life Span: </label>
+            <input
+              type="text"
+              value={input.life_span}
+              name="life_span"
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <p />
+          <div>
+            <label>Temperaments: </label>
+            <select onChange={(e) => handleSelect(e)}>
+              {temps.map((t) => (
+                <option value={t}>{t}</option>
+              ))}
+            </select>
             <ul>
-              <li>{input.temperament.map((e) => e + ",")}</li>
+              <li>{input.temperament.map((e) => e + " - ")}</li>
             </ul>
-          </select>
-        </div>
+          </div>
+          <p />
+          <p />
 
-        <button type="submit">Crear Raza</button>
+          <button type="submit">Create</button>
+        </div>
       </form>
     </div>
   );

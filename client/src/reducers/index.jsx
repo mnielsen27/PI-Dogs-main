@@ -131,10 +131,10 @@ function rootReducer(state = initialState, action) {
               return 0;
             })
           : state.dogs.sort(function (a, b) {
-              if (a.min_weight < b.min_weight) {
+              if (a.max_weight < b.max_weight) {
                 return 1;
               }
-              if (a.min_weight > b.min_weight) {
+              if (a.max_weight > b.max_weight) {
                 return -1;
               }
               return 0;

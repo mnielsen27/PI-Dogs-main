@@ -1,0 +1,21 @@
+.background-creation {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-image: url('../images/istockphoto-855091300-612x612.jpg');
+    background-size:cover;
+    min-height: 100vh;
+}
+
+#back-button {
+    margin-top: 10vh;
+}
+
+#form {
+
+    background-color: rgba(255, 255, 255, 0.525);
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+    margin-left: 30vw;
+    margin-right: 30vw;
+}
+
+
