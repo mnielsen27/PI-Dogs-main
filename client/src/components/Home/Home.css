@@ -1,23 +1,28 @@
 .background-home {
-    
     min-height: 100vh;
     background-image: url('../../images/istockphoto-855091300-612x612.jpg');
     background-size:contain;
-    background-position: center center;
+   /* background-position: center center;*/
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     
     }
 
 #home-link-creationForm{
-
+    font-weight:bolder;
     font-size: 18px;
     padding-top: 2vh;
+
+
 }
 
 .cards {
-    margin-top: 18px;
+    /*background-color: yellow;*/
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 5%;
+    margin-bottom: 0%;
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     justify-content: center;
 }
 

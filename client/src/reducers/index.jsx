@@ -139,6 +139,8 @@ function rootReducer(state = initialState, action) {
               }
               return 0;
             });
+
+            
       return {
         ...state,
         dogs: action.payload === "All" ? allDogs4 : orderedDogsW,

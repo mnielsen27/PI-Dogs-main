@@ -71,6 +71,9 @@ export default function Home() {
 
   return (
     <div className="background-home">
+      <Link id="home-link-creationForm" to="/dog">
+        Creation form - new breed
+      </Link>
       <h1 id="home-Title">A DOG'S PAGE</h1>
 
       <button
@@ -137,9 +140,6 @@ export default function Home() {
           <SearchBar />
         </div>
         <br />
-        <Link id="home-link-creationForm" to="/dog">
-          Creation form - new breed
-        </Link>
 
         <Paginado
           dogsPerPage={dogsPerPage}
@@ -147,10 +147,9 @@ export default function Home() {
           paginado={paginado}
         ></Paginado>
       </div>
-
-      {allPagDogs?.map((e) => {
-        return (
-          <div className="cards">
+      <div className="cards">
+        {allPagDogs?.map((e) => {
+          return (
             <Link to={"/detail/" + e.id}>
               <Card
                 image={e.image}
@@ -160,9 +159,9 @@ export default function Home() {
                 temperament={e.temperament}
               />
             </Link>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
