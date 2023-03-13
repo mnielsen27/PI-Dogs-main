@@ -10,12 +10,7 @@ export const FILTER_BY_BREED = "FILTER_BY_BREED";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
 export const ORDER_BY_WEIGHT = "ORDER_BY_WEIGHT";
 export const CLEAR_PAGE = "CLEAR_PAGE";
-
-export function clearPage() {
-  return {
-    type: CLEAR_PAGE,
-  };
-}
+export const FILTER_18 = "FILTER_18";
 
 export function getDogs() {
   return async function (dispatch) {
@@ -69,6 +64,12 @@ export function getDogDetail(id) {
   };
 }
 
+export function clearPage() {
+  return {
+    type: CLEAR_PAGE,
+  };
+}
+
 export function getSearchByName(name) {
   return async function (dispatch) {
     try {
@@ -111,5 +112,11 @@ export function orderByWeight(payload) {
   return {
     type: ORDER_BY_WEIGHT,
     payload,
+  };
+}
+
+export function filter18() {
+  return {
+    type: FILTER_18,
   };
 }

@@ -23,7 +23,7 @@ router.get("/dogs/:id", async (req, res) => {
 
     dogByID
       ? res.status(200).send(dogByID)
-      : res.status(404).send("No se encontro la raza solicitada");
+      : res.status(404).send("No breed found");
   } catch (e) {
     console.log(e, "Error en el get:id");
   }
@@ -36,15 +36,17 @@ router.get("/dogs", async (req, res) => {
     if (!name) {
       allDogs.length
         ? res.status(200).send(allDogs)
-        : res.status(404).send("No hay resultados para esta busqueda");
+        : res.status(404).send("There are no results for this search");
     } else {
       const byName = allDogs.filter((e) =>
         e.name.toLowerCase().includes(name.toLowerCase())
       );
-      console.log(byName, "byName linea 46");
+
       byName.length
         ? res.status(200).send(byName)
-        : res.status(404).send(`No se encontro raza con el nombre ${name}`);
+        : res
+            .status(404)
+            .send(`There is no breed that matches the name ${name}`);
     }
   } catch (e) {
     console.log(e, "Error Catch en el get a all Dogs");
@@ -75,6 +77,7 @@ router.post("/dogs", async (req, res) => {
     temperament,
   } = req.body;
 
+  
   try {
     const newDog = await dog.newBreed(
       name,
@@ -88,8 +91,8 @@ router.post("/dogs", async (req, res) => {
     );
 
     newDog
-      ? res.status(200).send("Raza creada con exito")
-      : res.send(404).send("No se ha creado la raza");
+      ? res.status(200).send("Breed created succesfully")
+      : res.send(404).send("There was an error creating new breed");
   } catch (e) {
     console.log(e, "Error en el catch del post");
   }

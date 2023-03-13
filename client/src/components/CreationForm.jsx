@@ -153,7 +153,7 @@ export default function DogCreation() {
     console.log(errors);
     if (Object.keys(errors).length === 0) {
       dispatch(postDog(input));
-      alert("Dog Breed creado con exito");
+      alert("Dog Breed successfully created!");
       setInput({
         name: "",
         image: "",
@@ -205,7 +205,7 @@ export default function DogCreation() {
           </div>
           <p />
           <div>
-            <label>Max Weight: </label>
+            <label>Max Weight (kg): </label>
             <input
               type="number"
               value={input.max_weight}
@@ -216,7 +216,7 @@ export default function DogCreation() {
           </div>
           <p />
           <div>
-            <label>Min Weight: </label>
+            <label>Min Weight (kg): </label>
             <input
               type="number"
               value={input.min_weight}
@@ -227,7 +227,7 @@ export default function DogCreation() {
           </div>
           <p />
           <div>
-            <label>Max Height: </label>
+            <label>Max Height (cm): </label>
             <input
               type="number"
               value={input.max_height}
@@ -239,7 +239,7 @@ export default function DogCreation() {
 
           <p />
           <div>
-            <label>Min Height: </label>
+            <label>Min Height (cm): </label>
             <input
               type="number"
               value={input.min_height}
@@ -273,7 +273,19 @@ export default function DogCreation() {
           <p />
           <p />
 
-          <button type="submit">Create</button>
+          <button
+            type="submit"
+            disabled={
+              !input.name ||
+              !input.max_height ||
+              !input.min_height ||
+              !input.max_height ||
+              !input.max_weight ||
+              !input.min_weight
+            }
+          >
+            Create
+          </button>
         </div>
       </form>
     </div>

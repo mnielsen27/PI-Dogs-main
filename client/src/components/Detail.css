@@ -1,6 +1,6 @@
 .detail {
     background-image: url('../images/istockphoto-855091300-612x612.jpg');
-    background-size: cover;
+    background-size: contain;
     min-height: 100vh;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
    

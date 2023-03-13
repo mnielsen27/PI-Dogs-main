@@ -8,6 +8,7 @@ import {
   filterByBreed,
   orderByName,
   orderByWeight,
+  filter18,
 } from "../../actions";
 import { Link } from "react-router-dom";
 import Card from "../Card";
@@ -17,7 +18,6 @@ import "./Home.css";
 
 export default function Home() {
   const dispatch = useDispatch();
-  // ESTO ES LO MISMO QUE EL MAP STATE TO PROPS
   const allDogs = useSelector((state) => state.dogs);
   const allTemp = useSelector((state) => state.temperaments);
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,11 +48,15 @@ export default function Home() {
     e.preventDefault();
     console.log(e.target.value, "value del temp");
     dispatch(filterDogsByTemperament(e.target.value));
+    setCurrentPage(1);
+    setOrder(`Ordenado ${e.target.value}`);
   }
 
   function handleFilterByBreed(e) {
     e.preventDefault();
     dispatch(filterByBreed(e.target.value));
+    setCurrentPage(1);
+    setOrder(`Ordenado ${e.target.value}`);
   }
 
   function handleOrderByName(e) {
@@ -65,6 +69,13 @@ export default function Home() {
   function handleOrderByWeight(e) {
     e.preventDefault();
     dispatch(orderByWeight(e.target.value));
+    setCurrentPage(1);
+    setOrder(`Ordenado ${e.target.value}`);
+  }
+
+  function handleEighteen(e) {
+    e.preventDefault();
+    dispatch(filter18());
     setCurrentPage(1);
     setOrder(`Ordenado ${e.target.value}`);
   }
@@ -86,6 +97,14 @@ export default function Home() {
       </button>
       <p />
 
+      <button
+        id="18kgs"
+        onClick={(e) => {
+          handleEighteen(e);
+        }}
+      >
+        PERROS DE 18 kgs
+      </button>
       <div>
         <select
           className="home-filters"

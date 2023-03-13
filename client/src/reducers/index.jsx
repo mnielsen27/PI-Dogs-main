@@ -9,6 +9,7 @@ import {
   ORDER_BY_NAME,
   ORDER_BY_WEIGHT,
   CLEAR_PAGE,
+  FILTER_18,
 } from "../actions";
 
 const initialState = {
@@ -59,16 +60,23 @@ function rootReducer(state = initialState, action) {
         ...state,
       };
 
+    case FILTER_18: {
+      const filtered18 = state.allDogs.filter((e) => e.min_weight === 18);
+
+      return {
+        ...state,
+        dogs: filtered18,
+      };
+    }
+
     case FILTER_BY_TEMP: {
       const allDogs2 = state.allDogs;
-      console.log(allDogs2[5], "allDogs[5]");
 
       const filteredDogs =
         action.payload === "All"
           ? allDogs2
           : allDogs2.filter((e) => e.temperament?.includes(action.payload));
 
-      console.log(filteredDogs, "filteredDogs");
       return {
         ...state,
         dogs: filteredDogs,
@@ -76,15 +84,15 @@ function rootReducer(state = initialState, action) {
     }
 
     case FILTER_BY_BREED: {
-      const allDogs2 = state.allDogs;
-      let statusFiltered2 =
+      const allDogs4 = state.allDogs;
+      let statusFiltered4 =
         action.payload === "creada"
-          ? allDogs2?.filter((e) => e.id.length > 10)
-          : allDogs2?.filter((e) => !(e.id.length > 10));
+          ? allDogs4?.filter((e) => e.id.length > 10)
+          : allDogs4?.filter((e) => !(e.id.length > 10));
 
       return {
         ...state,
-        dogs: action.payload === "All" ? allDogs2 : statusFiltered2,
+        dogs: action.payload === "All" ? allDogs4 : statusFiltered4,
       };
     }
 
@@ -92,7 +100,7 @@ function rootReducer(state = initialState, action) {
       const allDogs3 = state.allDogs;
       let orderedDogs =
         action.payload === "desc"
-          ? state.dogs.sort(function (a, b) {
+          ? state.allDogs.sort(function (a, b) {
               if (a.name > b.name) {
                 return 1;
               }
@@ -101,7 +109,7 @@ function rootReducer(state = initialState, action) {
               }
               return 0;
             })
-          : state.dogs.sort(function (a, b) {
+          : state.allDogs.sort(function (a, b) {
               if (a.name < b.name) {
                 return 1;
               }
@@ -121,7 +129,7 @@ function rootReducer(state = initialState, action) {
 
       let orderedDogsW =
         action.payload === "ascweight"
-          ? state.dogs.sort(function (a, b) {
+          ? state.allDogs.sort(function (a, b) {
               if (a.min_weight > b.min_weight) {
                 return 1;
               }
@@ -130,7 +138,7 @@ function rootReducer(state = initialState, action) {
               }
               return 0;
             })
-          : state.dogs.sort(function (a, b) {
+          : state.allDogs.sort(function (a, b) {
               if (a.max_weight < b.max_weight) {
                 return 1;
               }
@@ -140,10 +148,11 @@ function rootReducer(state = initialState, action) {
               return 0;
             });
 
-            
+      const filteredDogs2 = orderedDogsW.filter((e) => e.min_weight != null);
+
       return {
         ...state,
-        dogs: action.payload === "All" ? allDogs4 : orderedDogsW,
+        dogs: action.payload === "All" ? allDogs4 : filteredDogs2,
       };
     }
 
